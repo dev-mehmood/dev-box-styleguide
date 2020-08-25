@@ -10,7 +10,7 @@ module.exports = (webpackConfigEnv) => {
 
   return webpackMerge.smart(defaultConfig, {
     output:{
-      filename:`[hash]-@dev-box-styleguide.js`
+      filename:`[hash]/@dev-box-styleguide.js`
     }
     // modify the webpack config however you'd like to by adding to this object
   });
