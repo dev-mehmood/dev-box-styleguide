@@ -13,8 +13,12 @@ async function exec_it() {
 
         const files = await fs.readdir(directoryPath);
 
-        hash = files[0]
-        await fs.writeFile(`${directoryPath}/meta.txt`, hash)
+        file = files.filter((f)=>f.endsWith(fileName))
+        if(file.length) {
+            hash = file[0].split('-')[0]
+            await fs.writeFile(`${directoryPath}/meta.txt`, hash)
+            console.log(file)
+        }
        
        
     } catch (e) {
