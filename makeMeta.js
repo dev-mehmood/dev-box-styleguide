@@ -3,7 +3,7 @@ const path = require('path');
 const promisify = require('promisify-node')
 const fs = promisify('fs');
 const { exec, spawn, fork, execFile } = require('promisify-child-process');
-const fileName = '@dev-box-styleguide.js'
+const fileName = 'styleguide.js'
 async function exec_it() {
 
     try {
