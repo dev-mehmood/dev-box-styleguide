@@ -54,11 +54,13 @@ module.exports.deploy = async function () {
     console.log("Code Pushed to git \n");
     if (process.env.MODE === "stage") {
       await this.updateImportMapStage();
+      console.log("done");
     }
 
     if (process.env.MODE === "production") {
       const tag = await this.tagProduction();
       await this.updateImportMapProd(tag);
+      console.log("done");
     }
   } catch (e) {
     console.dir(e);
@@ -75,7 +77,7 @@ module.exports.updateImportMapStage = async function () {
     data: {
       imports: {
         [`${process.env.SYSTEMJS_PATH}`]: `https://cdn.jsdelivr.net/gh/dev-mehmood/${process.env.GIT_REPO}/dist/${process.env.SYSTEM_JS_FILE_NAME}.js`,
-        [`${process.env.SYSTEMJS_PATH}/`]: `https://cdn.jsdelivr.net/gh/dev-mehmood/${process.env.GIT_REPO}/dist/${process.env.GIT_REPO}/dist/${process.env.SYSTEM_JS_FILE_NAME}.js/`,
+        [`${process.env.SYSTEMJS_PATH}/`]: `https://cdn.jsdelivr.net/gh/dev-mehmood/${process.env.GIT_REPO}/dist/${process.env.SYSTEM_JS_FILE_NAME}.js/`,
       },
       mode: "stage",
     },
